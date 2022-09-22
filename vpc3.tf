@@ -27,6 +27,7 @@ resource "aws_subnet" "PVsubnets3" {
   count      = length(var.vpc3_PVazs)
   vpc_id     = aws_vpc.main3.id
   cidr_block = element(var.vpc3_PVsubnet, count.index)
+  availability_zone = element(var.vpc3_PVazs,count.index)
 
   tags = {
     Name = "${var.vpc3_name}-PV-${count.index + 1}"
@@ -37,6 +38,7 @@ resource "aws_subnet" "PBsubnets3" {
   count      = length(var.vpc3_PBazs)
   vpc_id     = aws_vpc.main3.id
   cidr_block = element(var.vpc3_PBsubnet, count.index)
+  availability_zone = element(var.vpc3_PBazs,count.index)
 
   tags = {
     Name = "${var.vpc3_name}-PB-${count.index + 1}"
